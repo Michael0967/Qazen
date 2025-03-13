@@ -9,7 +9,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: [['list'], ['html', { outputFolder: 'playwright-report' }]],
   use: {
-    baseURL: 'https://ricoh-imaging.eu/',
+    baseURL: 'https://printemps-a-paris.myshopify.com/',
     trace: 'on-first-retry',
     timezoneId: 'Europe/Paris'
   },

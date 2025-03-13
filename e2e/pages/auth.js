@@ -1,8 +1,8 @@
 const fs = require('fs/promises')
 
 const STORAGE = 'auth.json'
-const PREVIEW_URL = '?preview_theme_id=178136088953'
-const PASSWORD = 'Ricoh'
+const PREVIEW_URL = '?preview_theme_id=175491252572'
+const PASSWORD = 'paris'
 
 class Auth {
   /**
