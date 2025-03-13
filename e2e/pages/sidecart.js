@@ -25,6 +25,13 @@ class Sidecart {
   async isOpen(bolean) {
     await expect(this.section).toHaveAttribute('data-active', bolean.toString(), { timeout: 2500 })
   }
+
+  async validateScroll(state) {
+    if (state !== 'hidden' && state !== 'visible') {
+      throw new Error(`Invalid state: "${state}". Expected "hidden" or "visible".`)
+    }
+    await expect(this.page.locator('body')).toHaveCSS('overflow', state, { timeout: 1000 })
+  }
 }
 
 export default Sidecart

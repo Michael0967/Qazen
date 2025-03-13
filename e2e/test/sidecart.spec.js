@@ -33,7 +33,12 @@ test.afterAll(async () => {
 test('Opens when clicking the open button.', async () => {
   await sidecart.open()
   await sidecart.isOpen(true)
-  await page.screenshot({ path: 'screenshot_test.png' })
+})
+
+test('Scrolling is disabled while the Sidecart is open.', async () => {
+  await sidecart.open()
+  await sidecart.isOpen(true)
+  await sidecart.validateScroll('hidden')
 })
 
 test('Closes when clicking the "Close" button.', async () => {
@@ -41,6 +46,7 @@ test('Closes when clicking the "Close" button.', async () => {
   await sidecart.isOpen(true)
   await sidecart.close()
   await sidecart.isOpen(false)
+  await sidecart.validateScroll('visible')
 })
 
 test('Closes when clicking outside the Sidecart.', async () => {
