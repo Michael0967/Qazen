@@ -1,0 +1,14 @@
+{
+  "name": "qazen",
+  "version": "1.0.0",
+  "author": "Michael Rojas",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10"
+  }
+}
