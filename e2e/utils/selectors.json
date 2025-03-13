@@ -7,7 +7,12 @@
 
     "upsell": {
       "section": "[data-cy='cart-upsell']",
-      "cards": "[data-cy='cart-upsell-product']"
+      "cards": "[data-cy='cart-upsell-product']",
+      "addProduct": "[data-cy='upsell-product-add-to-cart']"
+    },
+
+    "itemProduct": {
+      "item": "[data-cy='cart-item']"
     }
   }
 }

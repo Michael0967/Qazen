@@ -71,5 +71,10 @@ test('Closes when clicking outside the Sidecart.', async () => {
 
 test('Clicking "Add" on an upsell product adds it to the cart.', async () => {
   await skipTestIfElementNotFound(selector.sidecart.upsell.section)
+  await sidecart.open()
+  await sidecart.isOpen(true)
   await sidecart.addUpsellProductToCart()
+  await sidecart.checkItemVisibility(true)
 })
+
+// await page.screenshot({ path: 'screenshot_test.png' })

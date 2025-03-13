@@ -10,6 +10,8 @@ class Sidecart {
     this.overlay = this.page.locator(selector.sidecart.overlay)
     this.upsellSection = this.page.locator(selector.sidecart.upsell.section)
     this.cards = this.page.locator(selector.sidecart.upsell.cards)
+    this.addProductUpsell = this.page.locator(selector.sidecart.upsell.addProduct)
+    this.item = this.page.locator(selector.sidecart.itemProduct.item)
   }
 
   async open() {
@@ -36,7 +38,15 @@ class Sidecart {
   }
 
   async addUpsellProductToCart() {
-    const cardCount = await this.upsellSection.locator(this.cards).count()
+    const cardsLocator = this.upsellSection.locator(this.cards)
+    const count = await cardsLocator.count()
+    const randomIndex = Math.floor(Math.random() * count)
+    const randomCard = cardsLocator.nth(randomIndex)
+    await randomCard.locator(this.addProductUpsell).click()
+  }
+
+  async checkItemVisibility(shouldBeVisible) {
+    await expect(this.item)[shouldBeVisible ? 'toBeVisible' : 'not.toBeVisible']()
   }
 }
 
