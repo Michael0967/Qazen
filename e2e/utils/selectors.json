@@ -1,0 +1,8 @@
+{
+  "sidecart": {
+    "section": "#shopify-section-side-cart",
+    "open": "[data-cy='cart-icon']",
+    "close": "[data-cy='close-sidecart']",
+    "overlay": ".overlay"
+  }
+}

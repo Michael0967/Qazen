@@ -1,8 +1,13 @@
+import { expect } from '@playwright/test'
+import selector from '../utils/selectors.json'
+
 class Sidecart {
   constructor({ page }) {
     this.page = page
-    this.cartIcon = this.page.locator('[data-cy="cart-icon"]')
-    this.closeIcon = this.page.locator('[data-cy="close-sidecart"]')
+    this.cartIcon = this.page.locator(selector.sidecart.open)
+    this.closeIcon = this.page.locator(selector.sidecart.close)
+    this.section = this.page.locator(selector.sidecart.section)
+    this.overlay = this.page.locator(selector.sidecart.overlay)
   }
 
   async open() {
@@ -11,6 +16,14 @@ class Sidecart {
 
   async close() {
     await this.closeIcon.click()
+  }
+
+  async closeOutside() {
+    await this.overlay.click()
+  }
+
+  async isOpen(bolean) {
+    await expect(this.section).toHaveAttribute('data-active', bolean.toString(), { timeout: 2500 })
   }
 }
 

@@ -30,12 +30,24 @@ test.afterAll(async () => {
 })
 
 // TESTS
-
-test('Open sidecart', async () => {
+test('Opens when clicking the open button.', async () => {
   await sidecart.open()
+  await sidecart.isOpen(true)
+  await page.screenshot({ path: 'screenshot_test.png' })
 })
 
-test('Open and close sidecart', async () => {
+test('Closes when clicking the "Close" button.', async () => {
   await sidecart.open()
+  await sidecart.isOpen(true)
   await sidecart.close()
+  await sidecart.isOpen(false)
 })
+
+test('Closes when clicking outside the Sidecart.', async () => {
+  await sidecart.open()
+  await sidecart.isOpen(true)
+  await sidecart.closeOutside()
+  await sidecart.isOpen(false)
+})
+
+// await page.screenshot({ path: 'screenshot_test.png' })
