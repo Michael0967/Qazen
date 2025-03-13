@@ -28,7 +28,7 @@ class Auth {
   }
 
   /**
-   * Carga la sesión almacenada desde `auth.json`
+   * Loads the stored session from `auth.json`
    * @returns {Promise<{cookies: import('playwright').CookiesArray, url: string} | null>}
    */
   static async loadSession() {
@@ -41,18 +41,18 @@ class Auth {
   }
 
   /**
-   * Guarda la sesión actual del navegador
+   * Saves the current browser session
    * @param {import('playwright').BrowserContext} context
    * @param {import('playwright').Page} page
    */
   static async saveSession(context, page) {
     const cookies = await context.cookies()
-    const url = page ? page.url() : null
+    const url = page.url()
     await fs.writeFile(STORAGE, JSON.stringify({ cookies, url }))
   }
 
   /**
-   * Aplica una sesión guardada al contexto del navegador
+   * Applies a saved session to the browser context
    * @param {import('playwright').BrowserContext} context
    * @param {import('playwright').Page} page
    */

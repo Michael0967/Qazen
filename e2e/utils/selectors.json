@@ -3,6 +3,11 @@
     "section": "#shopify-section-side-cart",
     "open": "[data-cy='cart-icon']",
     "close": "[data-cy='close-sidecart']",
-    "overlay": ".overlay"
+    "overlay": ".overlay",
+
+    "upsell": {
+      "section": "[data-cy='cart-upsell']",
+      "cards": "[data-cy='cart-upsell-product']"
+    }
   }
 }

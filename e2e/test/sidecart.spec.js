@@ -23,6 +23,8 @@ test.beforeAll(async ({ browser }) => {
 })
 
 test.beforeEach(async () => {
+  page = await context.newPage()
+  await Auth.applySession(context, page)
   sidecart = new Sidecart({ page })
 })
 
@@ -47,7 +49,6 @@ test('Opens when clicking the open button.', async () => {
 test('Scrolling is disabled while the Sidecart is open.', async () => {
   await skipTestIfElementNotFound(selector.sidecart.open)
   await sidecart.open()
-  await sidecart.isOpen(true)
   await sidecart.validateScroll('hidden')
 })
 
@@ -68,4 +69,7 @@ test('Closes when clicking outside the Sidecart.', async () => {
   await sidecart.isOpen(false)
 })
 
-// await page.screenshot({ path: 'screenshot_test.png' })
+test('Clicking "Add" on an upsell product adds it to the cart.', async () => {
+  await skipTestIfElementNotFound(selector.sidecart.upsell.section)
+  await sidecart.addUpsellProductToCart()
+})

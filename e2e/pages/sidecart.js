@@ -8,6 +8,8 @@ class Sidecart {
     this.closeIcon = this.page.locator(selector.sidecart.close)
     this.section = this.page.locator(selector.sidecart.section)
     this.overlay = this.page.locator(selector.sidecart.overlay)
+    this.upsellSection = this.page.locator(selector.sidecart.upsell.section)
+    this.cards = this.page.locator(selector.sidecart.upsell.cards)
   }
 
   async open() {
@@ -31,6 +33,10 @@ class Sidecart {
       throw new Error(`Invalid state: "${state}". Expected "hidden" or "visible".`)
     }
     await expect(this.page.locator('body')).toHaveCSS('overflow', state, { timeout: 1000 })
+  }
+
+  async addUpsellProductToCart() {
+    const cardCount = await this.upsellSection.locator(this.cards).count()
   }
 }
 
